@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="contestAdmin">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="admin-app.js"></script>
+</head>
+<body ng-controller="AdminController as ctrl">
+    <h1>Welcome Admin</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="document in ctrl.documents">
+                <td ng-bind="document.contestant.name"></td>
+                <td ng-bind="document.contestant.email"></td>
+                <td ng-bind="document.contestant.phoneNo"></td>
+                <td ng-click="ctrl.download(document.id)"><a href="#">Download</a></td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>
