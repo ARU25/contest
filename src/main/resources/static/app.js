@@ -14,7 +14,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
             controller: 'HomeCtrl'
         }).when('/essay', {
       templateUrl: 'view/essay.html',
-      controller: 'RegisterationController'
+      controller: 'RegisterationController',
+      controllerAs: 'ctrl'
   }).when('/', {
       templateUrl: 'view/home.html',
       controller: 'HomeCtrl'
