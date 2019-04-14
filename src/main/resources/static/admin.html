@@ -21,10 +21,11 @@
         </thead>
         <tbody>
             <tr data-ng-repeat="document in ctrl.documents">
-                <td ng-bind="document.contestant.name"></td>
-                <td ng-bind="document.contestant.email"></td>
-                <td ng-bind="document.contestant.phoneNo"></td>
-                <td ng-click="ctrl.download(document.id)"><a href="#">Download</a></td>
+                <td ng-bind="document.name"></td>
+                <td ng-bind="document.email"></td>
+                <td ng-bind="document.phoneNo"></td>
+                {{document}}
+                <td><a href="/api/document/{{document.fileName}}" download>Download</a> </td>
             </tr>
         </tbody>
 

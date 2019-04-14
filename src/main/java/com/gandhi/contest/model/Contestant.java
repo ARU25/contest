@@ -14,19 +14,7 @@ public class Contestant {
     private String name;
     private String phoneNo;
     private String email;
-
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "document_id", referencedColumnName = "id")
-    private Document document;
-
-    public Document getDocument() {
-        return document;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
-    }
+    private String fileName;
 
     public UUID getId() {
         return id;
@@ -60,4 +48,11 @@ public class Contestant {
         this.email = email;
     }
 
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
 }
