@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-resource/angular-resource.js"></script>
     <script src="admin-app.js"></script>
 </head>
 <body ng-controller="AdminController as ctrl">
-    <h1>Welcome Admin</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Download</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="document in ctrl.documents">
-                <td ng-bind="document.name"></td>
-                <td ng-bind="document.email"></td>
-                <td ng-bind="document.phoneNo"></td>
-                {{document}}
-                <td><a href="/api/document/{{document.fileName}}" download>Download</a> </td>
-            </tr>
-        </tbody>
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">Welcome Admin</a>
+        </nav>
 
-    </table>
+        <br>
+
+        <div class="card text-center">
+            <div class="card-header">
+                List of Essays Uploaded
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Download</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="document in ctrl.documents">
+                        <td ng-bind="document.name"></td>
+                        <td ng-bind="document.email"></td>
+                        <td ng-bind="document.phoneNo"></td>
+                        {{document}}
+                        <td><a href="/api/document/{{document.fileName}}" download>Download</a> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+
 </body>
 </html>
