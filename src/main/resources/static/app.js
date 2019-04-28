@@ -12,19 +12,35 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider.when('/home', {
             templateUrl: 'view/home.html',
             controller: 'HomeCtrl'
-        }).when('/essay', {
-      templateUrl: 'view/essay.html',
-      controller: 'RegisterationController',
-      controllerAs: 'ctrl'
-  }).when('/', {
-      templateUrl: 'view/home.html',
-      controller: 'HomeCtrl'
-  });
+          }).when('/essay', {
+              templateUrl: 'view/essay.html',
+              controller: 'RegisterationController',
+              controllerAs: 'ctrl'
+          }).when('/result', {
+              templateUrl: 'view/results.html',
+              controller: 'ResultController',
+              controllerAs: 'ctrl'
+          }).when('/', {
+              templateUrl: 'view/home.html',
+              controller: 'HomeCtrl'
+          });
 
 }])
-    .controller('HomeCtrl',function(){
+.factory('resultService',['$resource',function($resource){
+    return $resource('/api/result');
+}])
+.controller('HomeCtrl',function(){
 
-    })
+})
+.controller('ResultController',['resultService', function(resultService){
+
+    var _this = this;
+
+    resultService.query().$promise.then(function(response){
+        _this.results = response;
+    });
+
+}])
 .controller('RegisterationController',['Upload', function(Upload){
 
   this.contestant={};

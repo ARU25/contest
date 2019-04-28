@@ -1,0 +1,38 @@
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">Results</a>
+    </nav>
+    <br>
+    <div class="card text-center" ng-if="ctrl.results.length > 0">
+        <div class="card-header">
+            Congratulations winners!!!
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="result in ctrl.results|orderBy:'rank'">
+                    <td ng-bind="result.rank"></td>
+                    <td ng-bind="result.contestant.name"></td>
+                    <td ng-bind="result.contestant.email"></td>
+                    <td ng-bind="result.contestant.phone"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card text-center" ng-if="!ctrl.results.length">
+        <div class="card-body">
+            Results not declared yet.
+        </div>
+    </div>
+
+
+</div>

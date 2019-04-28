@@ -35,23 +35,26 @@
             <div class="card-body">
                 <table class="table table-hover">
                     <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Download</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Download</th>
+                            <th>Rank</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="document in ctrl.documents">
-                        <td ng-bind="document.name"></td>
-                        <td ng-bind="document.email"></td>
-                        <td ng-bind="document.phoneNo"></td>
-                        {{document}}
-                        <td><a href="/api/document/{{document.fileName}}" download>Download</a> </td>
-                    </tr>
+                        <tr data-ng-repeat="document in ctrl.documents">
+                            <td ng-bind="document.name"></td>
+                            <td ng-bind="document.email"></td>
+                            <td ng-bind="document.phoneNo"></td>
+                            {{document}}
+                            <td><a href="/api/document/{{document.fileName}}" download>Download</a> </td>
+                            <td><input type="text" ng-model="document.rank" placeholder="Enter Rank"/></td>
+                        </tr>
                     </tbody>
                 </table>
+                <button type="button" class="btn btn-primary" ng-click="ctrl.saveResult(ctrl.documents)">Declare Result</button>
             </div>
         </div>
 
