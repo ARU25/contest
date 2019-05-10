@@ -4,28 +4,28 @@
         <hr class="star-dark mb-5">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                <form name="registration" id="contactForm" novalidate="novalidate">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Name</label>
-                            <input class="form-control" ng-model="ctrl.contestant.name" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
-                            <p class="help-block text-danger"></p>
+                            <input class="form-control" ng-model="ctrl.contestant.name" id="name" name="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
+                            <p class="help-block text-danger" data-ng-show="registration.name.$dirty && registration.name.$error.required">name is required</p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Email Address</label>
-                            <input class="form-control" ng-model="ctrl.contestant.email" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
-                            <p class="help-block text-danger"></p>
+                            <input class="form-control" ng-model="ctrl.contestant.email" id="email" type="email" name="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
+                            <p class="help-block text-danger" data-ng-show="registration.email.$dirty && registration.email.$error.required">email is required</p>
+                            <p class="help-block text-danger" data-ng-show="registration.email.$dirty && registration.email.$error.invalid">invalid email</p>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Phone Number</label>
-                            <input class="form-control" ng-model="ctrl.contestant.phoneNo" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
-                            <p class="help-block text-danger"></p>
+                            <input class="form-control" ng-model="ctrl.contestant.phoneNo" id="phone" type="number" name="phoneNo" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
+                            <p class="help-block text-danger" data-ng-show="registration.phoneNo.$dirty && registration.phoneNo.$error.required">phone number is required</p>
+                            <p class="help-block text-danger" data-ng-show="registration.phoneNo.$dirty && registration.phoneNo.$error.invalid">invalid phone number</p>
                         </div>
                     </div>
                     <div class="control-group">
@@ -37,15 +37,16 @@
                                    id="file" type="file"
                                    placeholder="File"
                                    required="required"
+                                   name="file"
                                    data-validation-required-message="Please select a file.">
-                            <p class="help-block text-danger"></p>
+                            <p class="help-block text-danger" data-ng-show="registration.file.$dirty && registration.file.$error.required">no/invalid file selected.Please select a pdf/doc/oocx file</p>
                         </div>
                     </div>
                     <br>
                     <div id="success"></div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton"
-                                ng-click="ctrl.saveContestant(ctrl.contestant)">Register</button>
+                                ng-click="ctrl.saveContestant(ctrl.contestant)" ng-disabled="registration.$invalid">Register</button>
                     </div>
                 </form>
             </div>
