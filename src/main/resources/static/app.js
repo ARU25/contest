@@ -20,6 +20,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
               templateUrl: 'view/results.html',
               controller: 'ResultController',
               controllerAs: 'ctrl'
+          }).when('/invalid', {
+              templateUrl: 'view/under-construction.html'
           }).when('/', {
               templateUrl: 'view/home.html',
               controller: 'HomeCtrl'
