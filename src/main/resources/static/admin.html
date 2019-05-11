@@ -40,7 +40,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Download</th>
-                            <th>Rank</th>
+                            <th ng-if="!ctrl.resultsDeclared">Rank</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,16 +50,18 @@
                             <td ng-bind="document.phoneNo"></td>
                             {{document}}
                             <td><a href="/api/document/{{document.fileName}}" download>Download</a> </td>
-                            <td><input type="text" ng-model="document.rank" placeholder="Enter Rank"/></td>
+                            <td ng-if="!ctrl.resultsDeclared"><input type="number" ng-model="document.rank" placeholder="Enter Rank"/></td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-primary" ng-click="ctrl.saveResult(ctrl.documents)">Declare Result</button>
+                <button ng-if="!ctrl.resultsDeclared" type="button" class="btn btn-primary" ng-disabled="!ctrl.validateResult(ctrl.documents)" ng-click="ctrl.saveResult(ctrl.documents)">Declare Result</button>
+                <span ng-if="!ctrl.validateResult(ctrl.documents) && ctrl.rankEntered()" style="color:#ff253a">Invalid Ranks</span>
             </div>
         </div>
 
 
     </div>
+
 
 
 </body>
